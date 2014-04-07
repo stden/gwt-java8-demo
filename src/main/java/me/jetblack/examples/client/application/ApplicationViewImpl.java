@@ -6,10 +6,14 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewImpl;
 import com.sencha.gxt.widget.core.client.container.Viewport;
+import me.jetblack.examples.shared.Country;
+import me.jetblack.examples.shared.Region;
 
 import javax.inject.Inject;
+import java.util.List;
 
 public class ApplicationViewImpl extends ViewImpl implements ApplicationView {
+
     public interface Binder extends UiBinder<Widget, ApplicationViewImpl> {
     }
 
@@ -29,4 +33,21 @@ public class ApplicationViewImpl extends ViewImpl implements ApplicationView {
             super.setInSlot(slot, content);
         }
     }
+
+    @Override
+    public void displayCountries(List<Country> countries) {
+
+    }
+
+    @Override
+    public void displayError(String message) {
+
+    }
+
+    @Override
+    public void displayRegions(List<Region> regions) {
+
+    }
+
+
 }

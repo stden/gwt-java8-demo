@@ -228,6 +228,13 @@
             <version>${jackson.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava-gwt</artifactId>
+            <version>16.0</version>
+        </dependency>
+
+
 
         <!-- Test -->
         <dependency>
