@@ -45,7 +45,7 @@
     <repositories>
             <repository>
                 <id>DEMO-REPO</id>
-                <url>https://raw.githubusercontent.com/jet-black/mvn-repo/master/</url>
+                <url>https://github.com/jet-black/mvn-repo/raw/master/</url>
                 <snapshots>
                     <enabled>true</enabled>
                     <updatePolicy>always</updatePolicy>
@@ -58,7 +58,7 @@
     <pluginRepositories>
         <pluginRepository>
             <id>PLUGIN-DEMO-REPO</id>
-            <url>https://raw.githubusercontent.com/jet-black/mvn-repo/master/</url>
+            <url>https://github.com/jet-black/mvn-repo/raw/master/</url>
             <snapshots>
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
