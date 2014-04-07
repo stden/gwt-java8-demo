@@ -17,11 +17,11 @@ import java.util.List;
 public interface CallbackCountryService extends RestService {
 
     @GET
-    @Path("/countires")
+    @Path("/countires/")
     public void getCountries(MethodCallback<List<Country>> callback);
 
     @GET
-    @Path("/regions/{countryId}")
+    @Path("/regions/{countryId}/")
     public void getRegions(@PathParam("countryId") Integer countryId, MethodCallback<List<Region>> callback);
 
 }

@@ -4,6 +4,7 @@ public class Region {
 
     private Integer id;
     private String name;
+    private Integer countryId;
 
     public Integer getId() {
         return id;
@@ -21,4 +22,20 @@ public class Region {
         this.name = name;
     }
 
+    public Integer getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(Integer countryId) {
+        this.countryId = countryId;
+    }
+
+    @Override
+    public String toString() {
+        return "Region{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", countryId=" + countryId +
+                '}';
+    }
 }

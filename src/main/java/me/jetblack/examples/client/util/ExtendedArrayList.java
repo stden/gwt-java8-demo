@@ -6,6 +6,13 @@ public class ExtendedArrayList<T> implements ExtendedList<T> {
 
     private ArrayList<T> source = new ArrayList<>();
 
+    public ExtendedArrayList() {
+    }
+
+    public ExtendedArrayList(List<T> source) {
+        this.source.addAll(source);
+    }
+
     public void trimToSize() {
         source.trimToSize();
     }
@@ -37,11 +44,6 @@ public class ExtendedArrayList<T> implements ExtendedList<T> {
     @Override
     public int lastIndexOf(Object o) {
         return source.lastIndexOf(o);
-    }
-
-    @Override
-    public Object clone() {
-        return source.clone();
     }
 
     @Override
@@ -143,6 +145,7 @@ public class ExtendedArrayList<T> implements ExtendedList<T> {
     public String toString() {
         return source.toString();
     }
+
 
 
 }

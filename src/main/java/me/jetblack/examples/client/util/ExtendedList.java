@@ -1,10 +1,7 @@
 package me.jetblack.examples.client.util;
 
-import org.apache.commons.lang.mutable.MutableInt;
-import org.fusesource.restygwt.client.future.Future;
-import org.fusesource.restygwt.client.future.FutureImpl;
-
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -16,6 +13,13 @@ public interface ExtendedList<T> extends List<T> {
         return result;
     }
 
+    default <R> R foldLeft(R init, Function2<R, T, R> function) {
+        R result = init;
+        for (T t : this) {
+            result = function.apply(result, t);
+        }
+        return result;
+    }
 
     default void each(Consumer<T> consumer) {
         for (T t : this) {

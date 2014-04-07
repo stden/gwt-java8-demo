@@ -1,7 +1,79 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'
-             xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container">
+             xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+             xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+             xmlns:tree="urn:import:com.sencha.gxt.widget.core.client.tree"
+             xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button"
+             xmlns:toolbar="urn:import:com.sencha.gxt.widget.core.client.toolbar">
 
-    <container:Viewport ui:field="main"/>
-    
+    <ui:with type="com.sencha.gxt.data.shared.TreeStore" field="store"/>
+    <ui:with type="com.sencha.gxt.core.client.ValueProvider" field="valueProvider"/>
+
+
+    <ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+             field="toolBarRowData">
+        <ui:attributes width="-1" height="-1"/>
+    </ui:with>
+
+    <ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+             field="allRegionsContentRowData">
+        <ui:attributes width="1" height="1"/>
+    </ui:with>
+
+    <ui:with type="com.sencha.gxt.core.client.util.Margins" field="countryPanelMargins">
+        <ui:attributes top="4" right="4" bottom="4" left="4"/>
+    </ui:with>
+
+    <ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData"
+             field="countryPanelLayoutData">
+        <ui:attributes width="0.33" height="1" margins="{countryPanelMargins}"/>
+    </ui:with>
+
+    <ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData"
+             field="regionPanelLayoutData">
+        <ui:attributes width="0.33" height="1" margins="{countryPanelMargins}"/>
+    </ui:with>
+
+    <ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData"
+             field="allRegionsLayoutData">
+        <ui:attributes width="0.33" height="1" margins="{countryPanelMargins}"/>
+    </ui:with>
+
+    <container:Viewport ui:field="main">
+        <gxt:ContentPanel title="GWT Example" bodyBorder="true" headingText="GWT Example">
+            <container:HorizontalLayoutContainer>
+                <container:child layoutData="{countryPanelLayoutData}">
+                    <gxt:ContentPanel headingText="Countries:">
+                        <tree:Tree ui:field="tree" width="300" valueProvider="{valueProvider}" store="{store}">
+                        </tree:Tree>
+                    </gxt:ContentPanel>
+                </container:child>
+                <container:child layoutData="{regionPanelLayoutData}">
+                    <gxt:ContentPanel headingText="Regions:">
+                        <container:VerticalLayoutContainer ui:field="regionsPanel">
+
+                        </container:VerticalLayoutContainer>
+                    </gxt:ContentPanel>
+                </container:child>
+                <container:child layoutData="{allRegionsLayoutData}">
+                    <gxt:ContentPanel headingText="All Regions:">
+                        <container:VerticalLayoutContainer>
+                            <container:child layoutData="{toolBarRowData}">
+                                <toolbar:ToolBar>
+                                    <button:TextButton text="Display All Regions" ui:field="allRegionsButton">
+                                    </button:TextButton>
+                                </toolbar:ToolBar>
+                            </container:child>
+                            <container:child layoutData="{allRegionsContentRowData}">
+                                <container:VerticalLayoutContainer ui:field="allRegionsContainer">
+
+                                </container:VerticalLayoutContainer>
+                            </container:child>
+                        </container:VerticalLayoutContainer>
+                    </gxt:ContentPanel>
+                </container:child>
+            </container:HorizontalLayoutContainer>
+        </gxt:ContentPanel>
+    </container:Viewport>
+
 </ui:UiBinder>

@@ -2,7 +2,7 @@ package me.jetblack.examples.server;
 
 import com.google.inject.servlet.ServletModule;
 import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
-import me.jetblack.examples.server.service.ProductService;
+import me.jetblack.examples.server.service.CountryResource;
 import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
 
 import javax.ws.rs.ext.MessageBodyReader;
@@ -14,7 +14,7 @@ public class ExampleServletModule extends ServletModule {
 
     @Override
     protected void configureServlets() {
-        bind(ProductService.class).asEagerSingleton();
+        bind(CountryResource.class).asEagerSingleton();
         bind(MessageBodyReader.class).to(JacksonJsonProvider.class);
         bind(MessageBodyWriter.class).to(JacksonJsonProvider.class);
         Map<String, String> initParams = new HashMap<String, String>();
