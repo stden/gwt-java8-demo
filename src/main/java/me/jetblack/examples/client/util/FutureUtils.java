@@ -11,27 +11,30 @@ public class FutureUtils {
     public static <E> Future<ExtendedList<E>> toFutureOfList(ExtendedList<Future<E>> source) {
         FutureImpl<ExtendedList<E>> init = new FutureImpl<>();
         init.completeWithSuccess(new ExtendedArrayList<E>());
-        return source.foldLeft(init, (prev, current) -> {
-            FutureImpl<ExtendedList<E>> next = new FutureImpl<>();
-            current.onComplete(new Consumer<Try<E>>() {
-                @Override
-                public void accept(Try<E> item) {
-                    prev.onComplete(new Consumer<Try<ExtendedList<E>>>() {
-                        @Override
-                        public void accept(Try<ExtendedList<E>> items) {
-                            if (!item.isSuccess() || !items.isSuccess()) {
-                                next.completeWithFailure(new IllegalArgumentException());
-                            } else {
-                                ExtendedList<E> result = new ExtendedArrayList<E>();
-                                result.addAll(items.get());
-                                result.add(item.get());
-                                next.completeWithSuccess(result);
+        return source.foldLeft(init, new Function2<Future<ExtendedList<E>>, Future<E>, Future<ExtendedList<E>>>() {
+            @Override
+            public Future<ExtendedList<E>> apply(Future<ExtendedList<E>> prev, Future<E> current) {
+                FutureImpl<ExtendedList<E>> next = new FutureImpl<>();
+                current.onComplete(new Consumer<Try<E>>() {
+                    @Override
+                    public void accept(Try<E> item) {
+                        prev.onComplete(new Consumer<Try<ExtendedList<E>>>() {
+                            @Override
+                            public void accept(Try<ExtendedList<E>> items) {
+                                if (!item.isSuccess() || !items.isSuccess()) {
+                                    next.completeWithFailure(new IllegalArgumentException());
+                                } else {
+                                    ExtendedList<E> result = new ExtendedArrayList<E>();
+                                    result.addAll(items.get());
+                                    result.add(item.get());
+                                    next.completeWithSuccess(result);
+                                }
                             }
-                        }
-                    });
-                }
-            });
-            return next;
+                        });
+                    }
+                });
+                return next;
+            }
         });
     }
 

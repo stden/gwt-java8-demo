@@ -4,10 +4,8 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.sencha.gxt.core.client.Style;
 import com.sencha.gxt.core.client.ValueProvider;
@@ -49,12 +47,24 @@ public class ApplicationViewImpl extends ViewWithUiHandlers<ApplicationUiHandler
     VerticalLayoutContainer allRegionsContainer;
     @UiField
     TextButton allRegionsButton;
+    @UiField
+    TextButton clearRegionsButton;
 
     @Inject
     public ApplicationViewImpl(Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
-        init();
+        initTree();
         initButton();
+        initClearButton();
+    }
+
+    private void initClearButton() {
+        clearRegionsButton.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                allRegionsContainer.clear();
+            }
+        });
     }
 
     private void initButton() {
@@ -66,7 +76,7 @@ public class ApplicationViewImpl extends ViewWithUiHandlers<ApplicationUiHandler
         });
     }
 
-    private void init() {
+    private void initTree() {
         tree.getSelectionModel().setSelectionMode(Style.SelectionMode.SINGLE);
         tree.getSelectionModel().addSelectionChangedHandler(new SelectionChangedEvent.SelectionChangedHandler<Country>() {
             @Override
