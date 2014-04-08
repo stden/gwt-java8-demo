@@ -45,7 +45,7 @@
     <repositories>
             <repository>
                 <id>DEMO-REPO</id>
-                <url>https://github.com/jet-black/mvn-repo/raw/master/</url>
+                <url>http://jetblack.me:8080/nexus/service/local/repositories/releases/content/</url>
                 <snapshots>
                     <enabled>true</enabled>
                     <updatePolicy>always</updatePolicy>
@@ -58,7 +58,7 @@
     <pluginRepositories>
         <pluginRepository>
             <id>PLUGIN-DEMO-REPO</id>
-            <url>https://github.com/jet-black/mvn-repo/raw/master/</url>
+            <url>http://jetblack.me:8080/nexus/service/local/repositories/releases/content/</url>
             <snapshots>
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
@@ -191,7 +191,7 @@
         <dependency>
             <groupId>org.fusesource.restygwt</groupId>
             <artifactId>restygwt-future</artifactId>
-            <version>1.5-SNAPSHOT</version>
+            <version>1.5</version>
         </dependency>
 
         <dependency>
