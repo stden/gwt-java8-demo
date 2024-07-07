@@ -19,7 +19,7 @@
 
         <!-- server -->
         <guice.version>3.0</guice.version>
-        <jetty.version>8.1.8.v20121106</jetty.version>
+        <jetty.version>8.1.16.v20140903</jetty.version>
         <jersey.version>1.12</jersey.version>
         <jackson.version>1.9.6</jackson.version>
 
