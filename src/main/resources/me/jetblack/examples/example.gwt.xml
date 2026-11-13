@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<module rename-to='Example'>
+    <!-- Inherit the core Web Toolkit stuff. -->
+    <inherits name='com.google.gwt.user.User' />
+    <inherits name='com.google.gwt.inject.Inject' />
+
+    <!-- GXT -->
+    <stylesheet src="reset.css" />
+    <inherits name='com.sencha.gxt.ui.GXT' />
+
+    <!-- GXT Theme -->
+    <inherits name='com.sencha.gxt.theme.gray.Gray' />
+
+    <!-- GWTP -->
+    <inherits name='com.gwtplatform.mvp.MvpWithEntryPoint' />
+    <inherits name="org.fusesource.restygwt.RestyGWT"/>
+    <inherits name="com.google.gwt.json.JSON"/>
+
+    <source path='client' />
+    <source path='shared' />
+    
+    <!-- Reduce logging verbosity -->
+    <set-property name="gwt.logging.logLevel" value="WARNING"/>
+    <set-property name="gwt.logging.enabled" value="FALSE"/>
+
+    <!-- Default GIN Module -->
+    <set-configuration-property name="gin.ginjector.modules" value="me.jetblack.examples.client.gin.ClientModule" />
+</module>
